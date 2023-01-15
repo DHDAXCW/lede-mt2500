@@ -31,5 +31,5 @@
 -		desc = ubi_open_volume_nm(ubi_num, "rootfs", UBI_READONLY);
 +		desc = ubi_open_volume_nm(ubi_num, rootfs_volume, UBI_READONLY);
  		if (IS_ERR(desc))
- 			continue;
+ 			desc = ubi_open_volume_nm(ubi_num, "fit", UBI_READONLY);;
  

@@ -1,7 +1,5 @@
-Index: linux-5.4.188/drivers/mtd/devices/block2mtd.c
-===================================================================
---- linux-5.4.188.orig/drivers/mtd/devices/block2mtd.c
-+++ linux-5.4.188/drivers/mtd/devices/block2mtd.c
+--- a/drivers/mtd/devices/block2mtd.c
++++ b/drivers/mtd/devices/block2mtd.c
 @@ -26,11 +26,14 @@
  #include <linux/list.h>
  #include <linux/init.h>

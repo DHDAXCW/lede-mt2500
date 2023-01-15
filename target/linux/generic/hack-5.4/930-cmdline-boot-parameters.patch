@@ -9,7 +9,7 @@
  obj-$(CONFIG_MODULES) += kmod.o
  obj-$(CONFIG_MULTIUSER) += groups.o
  
---- a/kernel/boot_param.c
+--- /dev/null
 +++ b/kernel/boot_param.c
 @@ -0,0 +1,44 @@
 +/* SPDX-License-Identifier: BSD-3-Clause */

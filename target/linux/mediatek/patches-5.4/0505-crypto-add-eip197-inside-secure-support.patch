@@ -1,6 +1,6 @@
 --- a/drivers/crypto/inside-secure/safexcel.c
 +++ b/drivers/crypto/inside-secure/safexcel.c
-@@ -304,6 +304,11 @@
+@@ -304,6 +304,11 @@ static void eip197_init_firmware(struct
  		/* Enable access to all IFPP program memories */
  		writel(EIP197_PE_ICE_RAM_CTRL_FPP_PROG_EN,
  		       EIP197_PE(priv) + EIP197_PE_ICE_RAM_CTRL(pe));
@@ -12,7 +12,7 @@
  	}
  
  }
-@@ -409,7 +414,7 @@
+@@ -409,7 +414,7 @@ static int eip197_load_firmwares(struct
  		dir = "eip197d";
  	else if (priv->version == EIP197B_MRVL ||
  		 priv->version == EIP197_DEVBRD)
@@ -21,7 +21,7 @@
  	else
  		return -ENODEV;
  
-@@ -792,6 +797,12 @@
+@@ -792,6 +797,12 @@ static int safexcel_hw_init(struct safex
  			return ret;
  	}
  
@@ -34,7 +34,7 @@
  	return safexcel_hw_setup_cdesc_rings(priv) ?:
  	       safexcel_hw_setup_rdesc_rings(priv) ?:
  	       0;
-@@ -1498,6 +1509,9 @@
+@@ -1498,6 +1509,9 @@ static int safexcel_probe_generic(void *
  	hwopt = readl(EIP197_GLOBAL(priv) + EIP197_OPTIONS);
  	hiaopt = readl(EIP197_HIA_AIC(priv) + EIP197_HIA_OPTIONS);
  
@@ -44,7 +44,7 @@
  	if (priv->flags & SAFEXCEL_HW_EIP197) {
  		/* EIP197 */
  		peopt = readl(EIP197_PE(priv) + EIP197_PE_OPTIONS(0));
-@@ -1516,8 +1530,37 @@
+@@ -1516,8 +1530,37 @@ static int safexcel_probe_generic(void *
  					    EIP197_N_RINGS_MASK;
  		if (hiaopt & EIP197_HIA_OPT_HAS_PE_ARB)
  			priv->flags |= EIP197_PE_ARB;
@@ -83,7 +83,7 @@
  		/* If not a full TRC, then assume simple TRC */
  		if (!(hwopt & EIP197_OPT_HAS_TRC))
  			priv->flags |= EIP197_SIMPLE_TRC;
-@@ -1555,13 +1598,14 @@
+@@ -1555,13 +1598,14 @@ static int safexcel_probe_generic(void *
  				    EIP197_PE_EIP96_OPTIONS(0));
  
  	/* Print single info line describing what we just detected */
@@ -100,7 +100,7 @@
  
  	safexcel_configure(priv);
  
-@@ -1690,6 +1734,7 @@
+@@ -1690,6 +1734,7 @@ static int safexcel_probe(struct platfor
  {
  	struct device *dev = &pdev->dev;
  	struct safexcel_crypto_priv *priv;
@@ -108,7 +108,7 @@
  	int ret;
  
  	priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
-@@ -1701,7 +1746,11 @@
+@@ -1701,7 +1746,11 @@ static int safexcel_probe(struct platfor
  
  	platform_set_drvdata(pdev, priv);
  
@@ -173,7 +173,7 @@
  /* EIP197_STRC_CONFIG */
  #define EIP197_STRC_CONFIG_INIT			BIT(31)
  #define EIP197_STRC_CONFIG_LARGE_REC(s)		(s<<8)
-@@ -777,6 +788,7 @@
+@@ -777,6 +788,7 @@ enum safexcel_flags {
  	EIP197_PE_ARB		= BIT(2),
  	EIP197_ICE		= BIT(3),
  	EIP197_SIMPLE_TRC	= BIT(4),
@@ -181,7 +181,7 @@
  };
  
  struct safexcel_hwconfig {
-@@ -784,7 +796,10 @@
+@@ -784,7 +796,10 @@ struct safexcel_hwconfig {
  	int hwver;
  	int hiaver;
  	int ppver;

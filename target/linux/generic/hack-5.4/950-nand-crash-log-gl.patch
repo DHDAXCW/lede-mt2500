@@ -1,7 +1,5 @@
-Index: linux-5.4.211/drivers/mtd/mtdoops.c
-===================================================================
---- linux-5.4.211.orig/drivers/mtd/mtdoops.c
-+++ linux-5.4.211/drivers/mtd/mtdoops.c
+--- a/drivers/mtd/mtdoops.c
++++ b/drivers/mtd/mtdoops.c
 @@ -186,8 +186,25 @@ static void mtdoops_write(struct mtdoops
  	hdr[1] = MTDOOPS_KERNMSG_MAGIC;
  

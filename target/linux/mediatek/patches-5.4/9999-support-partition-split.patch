@@ -1,7 +1,5 @@
-Index: linux-5.4.188/block/Kconfig
-===================================================================
---- linux-5.4.188.orig/block/Kconfig
-+++ linux-5.4.188/block/Kconfig
+--- a/block/Kconfig
++++ b/block/Kconfig
 @@ -105,6 +105,9 @@ config BLK_DEV_THROTTLING_LOW
  
  	Note, this is an experimental interface and could be changed someday.
@@ -12,20 +10,16 @@ Index: linux-5.4.188/block/Kconfig
  config BLK_CMDLINE_PARSER
  	bool "Block device command line partition parser"
  	---help---
-Index: linux-5.4.188/block/Makefile
-===================================================================
---- linux-5.4.188.orig/block/Makefile
-+++ linux-5.4.188/block/Makefile
+--- a/block/Makefile
++++ b/block/Makefile
 @@ -36,3 +36,4 @@ obj-$(CONFIG_BLK_DEBUG_FS)	+= blk-mq-deb
  obj-$(CONFIG_BLK_DEBUG_FS_ZONED)+= blk-mq-debugfs-zoned.o
  obj-$(CONFIG_BLK_SED_OPAL)	+= sed-opal.o
  obj-$(CONFIG_BLK_PM)		+= blk-pm.o
 +obj-$(CONFIG_PARTITION_SPLIT)           += partition-split.o
-Index: linux-5.4.188/block/partition-generic.c
-===================================================================
---- linux-5.4.188.orig/block/partition-generic.c
-+++ linux-5.4.188/block/partition-generic.c
-@@ -21,6 +21,10 @@
+--- a/block/partition-generic.c
++++ b/block/partition-generic.c
+@@ -25,6 +25,10 @@
  
  #include "partitions/check.h"
  
@@ -36,7 +30,7 @@ Index: linux-5.4.188/block/partition-generic.c
  #ifdef CONFIG_BLK_DEV_MD
  extern void md_autodetect_dev(dev_t dev);
  #endif
-@@ -569,6 +573,9 @@ rescan:
+@@ -587,6 +591,9 @@ rescan:
  			highest = p;
  
  	disk_expand_part_tbl(disk, highest);
@@ -46,10 +40,8 @@ Index: linux-5.4.188/block/partition-generic.c
  
  	/* add partitions */
  	for (p = 1; p < state->limit; p++) {
-Index: linux-5.4.188/block/partition-split.c
-===================================================================
 --- /dev/null
-+++ linux-5.4.188/block/partition-split.c
++++ b/block/partition-split.c
 @@ -0,0 +1,111 @@
 +#include <linux/blkdev.h>
 +#include <linux/magic.h>
@@ -162,10 +154,8 @@ Index: linux-5.4.188/block/partition-split.c
 +    return 0;
 +
 +}
-Index: linux-5.4.188/block/partition-split.h
-===================================================================
 --- /dev/null
-+++ linux-5.4.188/block/partition-split.h
++++ b/block/partition-split.h
 @@ -0,0 +1,17 @@
 +#ifndef __PARTITION_SPLIT_H
 +#define __PARTITION_SPLIT_H

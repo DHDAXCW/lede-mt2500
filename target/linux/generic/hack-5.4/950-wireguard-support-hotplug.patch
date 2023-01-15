@@ -1,17 +1,13 @@
-Index: linux-5.4.188/drivers/net/wireguard/Makefile
-===================================================================
---- linux-5.4.188.orig/drivers/net/wireguard/Makefile
-+++ linux-5.4.188/drivers/net/wireguard/Makefile
+--- a/drivers/net/wireguard/Makefile
++++ b/drivers/net/wireguard/Makefile
 @@ -14,4 +14,5 @@ wireguard-y += allowedips.o
  wireguard-y += ratelimiter.o
  wireguard-y += cookie.o
  wireguard-y += netlink.o
 +wireguard-y += hotplug.o
  obj-$(CONFIG_WIREGUARD) := wireguard.o
-Index: linux-5.4.188/drivers/net/wireguard/hotplug.c
-===================================================================
 --- /dev/null
-+++ linux-5.4.188/drivers/net/wireguard/hotplug.c
++++ b/drivers/net/wireguard/hotplug.c
 @@ -0,0 +1,82 @@
 +#include <linux/workqueue.h>
 +#include <linux/netlink.h>
@@ -95,10 +91,8 @@ Index: linux-5.4.188/drivers/net/wireguard/hotplug.c
 +	INIT_WORK(&event->work, hotplug_work);
 +	schedule_work(&event->work);
 +}
-Index: linux-5.4.188/drivers/net/wireguard/hotplug.h
-===================================================================
 --- /dev/null
-+++ linux-5.4.188/drivers/net/wireguard/hotplug.h
++++ b/drivers/net/wireguard/hotplug.h
 @@ -0,0 +1,13 @@
 +#ifndef __HOTPLUG_H__
 +#define __HOTPLUG_H__
@@ -113,10 +107,8 @@ Index: linux-5.4.188/drivers/net/wireguard/hotplug.h
 +
 +#endif
 +
-Index: linux-5.4.188/drivers/net/wireguard/noise.c
-===================================================================
---- linux-5.4.188.orig/drivers/net/wireguard/noise.c
-+++ linux-5.4.188/drivers/net/wireguard/noise.c
+--- a/drivers/net/wireguard/noise.c
++++ b/drivers/net/wireguard/noise.c
 @@ -9,6 +9,7 @@
  #include "messages.h"
  #include "queueing.h"
@@ -134,10 +126,8 @@ Index: linux-5.4.188/drivers/net/wireguard/noise.c
  	} else {
  		kzfree(new_keypair);
  	}
-Index: linux-5.4.188/drivers/net/wireguard/timers.c
-===================================================================
---- linux-5.4.188.orig/drivers/net/wireguard/timers.c
-+++ linux-5.4.188/drivers/net/wireguard/timers.c
+--- a/drivers/net/wireguard/timers.c
++++ b/drivers/net/wireguard/timers.c
 @@ -8,6 +8,7 @@
  #include "peer.h"
  #include "queueing.h"

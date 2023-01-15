@@ -1,7 +1,5 @@
-Index: linux-5.4.188/drivers/net/usb/qmi_wwan.c
-===================================================================
---- linux-5.4.188.orig/drivers/net/usb/qmi_wwan.c
-+++ linux-5.4.188/drivers/net/usb/qmi_wwan.c
+--- a/drivers/net/usb/qmi_wwan.c
++++ b/drivers/net/usb/qmi_wwan.c
 @@ -507,6 +507,24 @@ static const u8 default_modem_addr[ETH_A
  
  static const u8 buggy_fw_addr[ETH_ALEN] = {0x00, 0xa0, 0xc6, 0x00, 0x00, 0x00};
@@ -86,10 +84,8 @@ Index: linux-5.4.188/drivers/net/usb/qmi_wwan.c
  	{QMI_FIXED_INTF(0x05c6, 0x9215, 4)},	/* Quectel EC20 Mini PCIe */
  	{QMI_GOBI_DEVICE(0x05c6, 0x9265)},	/* Asus Gobi 2000 Modem device (VR305) */
  	{QMI_GOBI_DEVICE(0x05c6, 0x9235)},	/* Top Global Gobi 2000 Modem device (VR306) */
-Index: linux-5.4.188/drivers/usb/serial/option.c
-===================================================================
---- linux-5.4.188.orig/drivers/usb/serial/option.c
-+++ linux-5.4.188/drivers/usb/serial/option.c
+--- a/drivers/usb/serial/option.c
++++ b/drivers/usb/serial/option.c
 @@ -568,6 +568,23 @@ static void option_instat_callback(struc
  #define WETELECOM_PRODUCT_WMD300		0x6803
  
@@ -232,10 +228,8 @@ Index: linux-5.4.188/drivers/usb/serial/option.c
  
  	return 0;
  }
-Index: linux-5.4.188/drivers/usb/serial/qcserial.c
-===================================================================
---- linux-5.4.188.orig/drivers/usb/serial/qcserial.c
-+++ linux-5.4.188/drivers/usb/serial/qcserial.c
+--- a/drivers/usb/serial/qcserial.c
++++ b/drivers/usb/serial/qcserial.c
 @@ -88,7 +88,6 @@ static const struct usb_device_id id_tab
  	{USB_DEVICE(0x03f0, 0x241d)},	/* HP Gobi 2000 QDL device (VP412) */
  	{USB_DEVICE(0x03f0, 0x251d)},	/* HP Gobi 2000 Modem device (VP412) */
@@ -244,10 +238,8 @@ Index: linux-5.4.188/drivers/usb/serial/qcserial.c
  	{USB_DEVICE(0x05c6, 0x9264)},	/* Asus Gobi 2000 QDL device (VR305) */
  	{USB_DEVICE(0x05c6, 0x9265)},	/* Asus Gobi 2000 Modem device (VR305) */
  	{USB_DEVICE(0x05c6, 0x9234)},	/* Top Global Gobi 2000 QDL device (VR306) */
-Index: linux-5.4.188/drivers/usb/serial/usb_wwan.c
-===================================================================
---- linux-5.4.188.orig/drivers/usb/serial/usb_wwan.c
-+++ linux-5.4.188/drivers/usb/serial/usb_wwan.c
+--- a/drivers/usb/serial/usb_wwan.c
++++ b/drivers/usb/serial/usb_wwan.c
 @@ -477,6 +477,20 @@ static struct urb *usb_wwan_setup_urb(st
  			  usb_sndbulkpipe(serial->dev, endpoint) | dir,
  			  buf, len, callback, ctx);

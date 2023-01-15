@@ -1,7 +1,5 @@
-Index: linux-5.4.188/include/uapi/linux/wireless.h
-===================================================================
---- linux-5.4.188.orig/include/uapi/linux/wireless.h
-+++ linux-5.4.188/include/uapi/linux/wireless.h
+--- a/include/uapi/linux/wireless.h
++++ b/include/uapi/linux/wireless.h
 @@ -544,7 +544,7 @@
  #define IW_SCAN_TYPE_ACTIVE 0
  #define IW_SCAN_TYPE_PASSIVE 1

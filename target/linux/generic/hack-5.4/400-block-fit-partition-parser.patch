@@ -26,7 +26,7 @@
  obj-$(CONFIG_LDM_PARTITION) += ldm.o
 --- a/drivers/mtd/ubi/block.c
 +++ b/drivers/mtd/ubi/block.c
-@@ -396,7 +396,7 @@ int ubiblock_create(struct ubi_volume_in
+@@ -402,7 +402,7 @@ int ubiblock_create(struct ubi_volume_in
  	dev->leb_size = vi->usable_leb_size;
  
  	/* Initialize the gendisk of this ubiblock device */
@@ -35,7 +35,7 @@
  	if (!gd) {
  		pr_err("UBI: block: alloc_disk failed\n");
  		ret = -ENODEV;
-@@ -413,6 +413,7 @@ int ubiblock_create(struct ubi_volume_in
+@@ -419,6 +419,7 @@ int ubiblock_create(struct ubi_volume_in
  		goto out_put_disk;
  	}
  	gd->private_data = dev;
